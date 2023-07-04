@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo List </title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .task-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .task-list li {
+      margin-bottom: 10px;
+    }
+
+    .task-list li span {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Today</h1>
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <button onclick="addTask()">Add Task</button>
+    <ul class="task-list" id="taskList"></ul>
+  </div>
+
+  <script>
+    // Todo list
+    const todos = [];
+
+    // Add a new task
+    function addTask() {
+      const taskInput = document.getElementById("taskInput");
+      const task = taskInput.value.trim();
+      
+      if (task !== "") {
+        todos.push(task);
+        taskInput.value = "";
+        renderTasks();
+      }
+    }
+
+    // Remove a task
+    function removeTask(index) {
+      todos.splice(index, 1);
+      renderTasks();
+    }
+
+    // Render tasks on the page
+    function renderTasks() {
+      const taskList = document.getElementById("taskList");
+      taskList.innerHTML = "";
+
+      if (todos.length > 0) {
+        todos.forEach((task, index) => {
+          const li = document.createElement("li");
+          const span = document.createElement("span");
+          span.innerHTML = task;
+          span.setAttribute("onclick", `removeTask(${index})`);
+          li.appendChild(span);
+          taskList.appendChild(li);
+        });
+      } else {
+        const li = document.createElement("li");
+        li.textContent = "Todo List is empty.";
+        taskList.appendChild(li);
+      }
+    }
+  </script>
+</body>
+</html>

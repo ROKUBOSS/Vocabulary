@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>To-Do-List</title>
+<link rel="shortcut icon" href="favicon.jpeg" type="image/x-icon">
+<style>
+body {
+  margin: 0;
+  min-width: 250px;
+  text-transform: capitalize;
+}
+
+/* Include the padding and border in an element's total width and height */
+* {
+  box-sizing: border-box;
+}
+
+/* Remove margins and padding from the list */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the list items */
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  border: 1px solid brown;
+  
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+ul li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* Darker background-color on hover */
+ul li:hover {
+  background: #ddd;
+}
+
+/* When clicked on, add a background color and strike out text */
+ul li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+/* Add a "checked" mark when clicked on */
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+/* Style the close button */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Style the header */
+.header {
+  background-color: #f44336;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+/* Clear floats after the header */
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the input */
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+/* Style the "Add" button */
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.addBtn:hover {
+  background-color: #bbb;
+}
+.hidden{
+  display: none;
+
+}
+.hide:hover .hidden{
+  display: block;
+}
+img{
+  width: 100%;
+  height: 700px;
+  margin: 0%;
+  padding: 0%;
+}
+</style>
+</head>
+<body>
+  <img src="eng.jpg" alt="">
+
+
+<div id="myDIV" class="header">
+  <h1 style="margin:5px">Throw The Vocabulary</h1>
+  <input type="text" id="myInput" placeholder="Title...">
+  <span onclick="newElement()" class="addBtn">Add</span>
+</div>
+
+<ul id="myUL">
+    <h3 style="font-family: cursive; text-align: center; color: darkblue;">Color(s)</h3>
+  <li>white</li>
+  <li>black</li>
+  <li>red</li>
+  <li>Orange</li>
+  <li>yellow</li>
+  <li>blue</li>
+  <li>brown</li>
+  <li>pink</li>
+  <li>green</li>
+  <li>silver</li>
+  <li>lime</li>
+  <li>cyan</li>
+  <li>olive</li>
+  <li>coral</li>
+  <li>plum</li>
+  <li>peach</li>
+  <li>ivory</li>
+  <li>gray</li>
+  <li>maroon</li>
+  <h3 style="font-family: cursive; text-align: center; color: darkblue;">Fruit(s)</h3>
+  <li>Apple	- আপেল</li>
+  <li>Banana -	কলা</li>
+  <li>Mango -	আম</li>
+  <li>Jackfruit	- কাঁঠাল</li>
+  <li>Orange -	কমলা</li>
+  <li>Grapes -	আঙ্গুর</li>
+  <li>Pear -	নাশপাতি</li>
+  <li>Watermelon -	তরমুজ</li>
+  <li>Pomegranate	- ডালিম </li>
+  <li>Fig -	ডুমুর</li>
+  <li>Dates	- খেজুর</li>
+  <li>Strawberry -	স্ট্রবেরি</li>
+  <li>Custard Apple -	আতা</li>
+  <li>Olive	- জলপাই</li>
+  <li>Coconut -	নারকেল</li>
+  <li>Tamarind -	তেঁতুল</li>
+  <li>Almond -	বাদাম</li>
+  <li>Avocado -	অ্যাভোকাডো</li>
+  <li>Lychee -	লিচু</li>
+  <li>Wood Apple -	কদবেল</li>
+  <li>Pineapple	- আনারস</li>
+  <li>Cherry -	চেরি</li>
+  <li>Cashew -	কাজু</li>
+  <li>Dragon Fruit -	ড্রাগন ফল</li>
+  <li>Grapefruit -	জাম্বুরা</li>
+  <h3 style="font-family: cursive; text-align: center; color: darkblue;">Vegetable(s)</h3>
+  <li>Tomato (টমেটো) – টমেটো</li>
+  <li>Cucumber (কিউকাম্বার) – শশা</li>
+  <li>Potato (পটেটো ) – আলু</li>
+  <li>Brinjal (ব্রিঞ্জাল) – বেগুন</li>
+  <li>Radish (র‍্যাডিশ) – মূলা</li>
+  <li>Pointed Gourd (পয়েন্টেড গর্ড ) – পটল</li>
+  <li>Papaya (পাপায়া) – পেঁপে</li>
+  <li>Lemon (লেমন) – লেবু</li>
+  <li>Taro (টারো) – কচু</li>
+  <li>Bean (বিন) – শিম</li>
+  <li>Yard-long Bean (ইয়ার্ড – লং বিন) – বরবটি</li>
+  <li>Lady Finger (লেডি ফিঙ্গার) – ঢেঁড়স</li>
+  <li>Bottle Gourd (বটল গর্ড) – লাউ</li>
+  <li>Carrot (ক্যারট) – গাজর</li>
+  <li>Wax Gourd (ওয়াক্স গর্ড) – চাল কুমড়া</li>
+  <li>Capsicum (ক্যাপসিকাম) – ক্যাপসিকাম</li>
+  <li>Pea (পি) – মটরশুঁটি</li>
+  <li>Bitter Gourd (বিটার গর্ড) – করলা</li>
+  <li>Snake Gourd (স্নেক গর্ড) – চিচিঙ্গা</li>
+  <li>Ribbed gourd (রিব্ড গর্ড) – ঝিঙ্গে</li>
+  <li> Broccoli (ব্রকলি) – ব্রকলি</li>
+  <h3 style="font-family: cursive; text-align: center; color: darkblue;">Family & Relatives</h3>
+  <li>Father -	বাবা</li>
+  <li>Dad -	বাবা, আব্বা, আব্বু</li>
+  <li>Mother -	মা</li>
+  <li>Mom	- মা, আম্মু, আম্মা</li>
+  <li>Parents -	মা-বাপ</li>
+  <li>grandfather - দাদা / নানা</li>
+  <li>grandmother - দাদি / নানি</li>
+  <li>uncle - মামা / চাচা</li>
+  <li>aunt - খালা / চাচি</li>
+  <li>Father-in-law -	শ্বশুর</li>
+  <li>Mother-in-law -	শাশুড়ী</li>
+  <li>Brother -	ভাই</li>
+  <li>Sister - বোন</li>
+  <li>Son -	ছেলে</li>
+  <li>Daughter - মেয়ে</li>
+  <li>Grandson - নাতি</li>
+  <li>Granddaughter - নাতনী</li>
+  <li>Husband	- স্বামী</li>
+  <li>Wife -	বউ</li>
+  <li>Younger brother -	ছোট ভাই</li>
+  <li>Middle brother -	মেজো ভাই</li>
+  <li>Elder brother	- বড় ভাই</li>
+  <li>Elder sister -	বড় বোন</li>
+  <li>Nephew (brother's son) -	ভাইপো / ভাতিজা</li>
+  <li>Niece (brother's daughter) -	ভাইঝি / ভাতিজি</li>
+  <li>Nephew (sister's son) -	ভাগনে / ভাগিনা</li>
+  <li>Niece (sister's daughter) -	ভাগ্নী / ভাগিনী</li>
+  <li>Brother-in-law (husband's younger brother) -	দেওর / দেবর</li>
+  <li>Brother-in-law (wife's younger brother) -	শালা</li>
+  <li>Sister-in-law (wife's younger sister) -	শালী</li>
+  <li>Sister-in-law (husband's sister) - ননদ</li>
+  <li>Sister-in-law (older brother's wife) -	বৌদি / ভাবী</li>
+  
+</ul>
+
+<script>
+// Create a "close" button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+</script>
+
+</body>
+</html>
