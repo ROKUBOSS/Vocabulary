@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Play Sound on Click</title>
+</head>
+<body>
+    <a href="https://mixkit.co/free-sound-effects/click/" target="_blank">Click Sound</a>
+    <button onclick="playSound()">Click me</button>
+   <input type="radio" onclick="playSound()">Play <br><br>
+   <input type="radio" onclick="playSound()">a <br><br>
+   <input type="radio" onclick="playSound()">b <br><br>
+   <input type="radio" onclick="playSound()">c <br><br>
+   <input type="radio" onclick="playSound()">d <br><br>
+   <button onclick="plaSound()">Click me</button>
+     <h2 onclick="mySound()">চেয়ার = الكرسي</h2>
+   
+
+    <script>
+        function playSound() {
+            var audio = new Audio('click.wav');
+            audio.play();
+        }
+    </script>
+     
+ 
+     <script>
+         function plaSound() {
+             var audio = new Audio('sharik.mp3');
+             audio.play();
+         }
+     </script>
+     <script>
+         function mySound() {
+             var audio = new Audio('ddd.mp3');
+             audio.play();
+         }
+     </script>
+</body>
+</html>

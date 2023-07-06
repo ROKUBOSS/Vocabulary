@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo List</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        // Function to add a new word to the list
+        function addWord() {
+            var wordInput = document.getElementById('wordInput');
+            var word = wordInput.value.trim();
+
+            if (word !== '') {
+                var list = document.getElementById('wordList');
+                var listItem = document.createElement('li');
+                listItem.textContent = word;
+                listItem.setAttribute('onclick', 'deleteWord(this)');
+                list.appendChild(listItem);
+
+                wordInput.value = '';
+                saveList();
+            }
+        }
+
+        // Function to delete a word from the list
+        function deleteWord(element) {
+            element.parentNode.removeChild(element);
+            saveList();
+        }
+
+        // Function to save the list in local storage
+        function saveList() {
+            var list = document.getElementById('wordList');
+            var words = [];
+
+            for (var i = 0; i < list.children.length; i++) {
+                words.push(list.children[i].textContent);
+            }
+
+            localStorage.setItem('wordList', JSON.stringify(words));
+        }
+
+        // Function to load the list from local storage
+        function loadList() {
+            var savedList = localStorage.getItem('wordList');
+
+            if (savedList) {
+                var list = document.getElementById('wordList');
+                var words = JSON.parse(savedList);
+
+                for (var i = 0; i < words.length; i++) {
+                    var listItem = document.createElement('li');
+                    listItem.textContent = words[i];
+                    listItem.setAttribute('onclick', 'deleteWord(this)');
+                    list.appendChild(listItem);
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="loadList()">
+    <h2>Todo List</h2>
+
+    <input type="text" id="wordInput" placeholder="Add a word">
+    <button onclick="addWord()">Add</button>
+
+    <ul id="wordList">
+        <!-- Existing words will be loaded here -->
+    </ul>
+</body>
+</html>
